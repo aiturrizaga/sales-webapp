@@ -18,6 +18,10 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getProducts();
+  }
+
+  getProducts() {
     this.productService.findAll().subscribe((res: any) => {
       console.log('Respuesta:', res);
       this.dataSource = res.data;
@@ -29,6 +33,7 @@ export class ProductListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+      this.getProducts();
     });
   }
 }

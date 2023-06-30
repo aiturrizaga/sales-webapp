@@ -17,6 +17,8 @@ import { ProductListComponent } from './web/product/product-list/product-list.co
 import { OrderListComponent } from './web/order/order-list/order-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductSaveComponent } from './web/product/product-save/product-save.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ProductSaveComponent } from './web/product/product-save/product-save.co
     HttpClientModule,
     MatDialogModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],
