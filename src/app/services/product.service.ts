@@ -8,7 +8,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   findAll() {
-    return this.http.get('http://localhost:1337/api/products');
+    return this.http.get('http://localhost:1337/api/products?filters[active][$eq]=true');
   }
 
   save(body: any) {
