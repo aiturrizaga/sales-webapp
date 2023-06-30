@@ -48,7 +48,7 @@ export class ProductSaveComponent implements OnInit {
       active: [true],
     });
 
-    if (this.data) {
+    if (this.data && this.data.product) {
       this.productForm.patchValue(this.data.product);
     }
 
