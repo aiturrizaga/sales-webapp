@@ -5,19 +5,21 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ProductService {
+
+  url: string = 'http://localhost:1337/api/products';
+
   constructor(private http: HttpClient) {}
 
   findAll() {
-    return this.http.get('http://localhost:1337/api/products?filters[active][$eq]=true');
+    return this.http.get(`${this.url}?filters[active][$eq]=true`);
   }
 
   save(body: any) {
-    return this.http.post('http://localhost:1337/api/products', body);
+    return this.http.post(this.url, body);
   }
 
   update(id: any, body:any) {
-    // return this.http.put('http://localhost:1337/api/products/' + id, body);
-    return this.http.put(`http://localhost:1337/api/products/${id}`, body);
+    return this.http.put(`${this.url}/${id}`, body);
   }
 
 }
