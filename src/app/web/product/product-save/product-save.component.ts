@@ -27,10 +27,16 @@ export class ProductSaveComponent implements OnInit {
   }
 
   saveProduct() {
-    console.log('New product', this.productForm.value);
+    console.log('New product', this.data);
     const body: DataBodyReq = new DataBodyReq();
     body.data = this.productForm.value;
-    this.productService.save(body).subscribe(res => this.dialogRef.close());
+
+    if (this.data.product) {
+      this.productService.update(this.data.id, body).subscribe(res => this.dialogRef.close());
+    } else {
+      this.productService.save(body).subscribe(res => this.dialogRef.close());
+    }
+    
   }
 
   initForm() {
@@ -41,5 +47,10 @@ export class ProductSaveComponent implements OnInit {
       category: ['', [Validators.required]],
       active: [true],
     });
+
+    if (this.data) {
+      this.productForm.patchValue(this.data.product);
+    }
+
   }
 }

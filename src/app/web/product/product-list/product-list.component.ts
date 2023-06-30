@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'description', 'price', 'category'];
+  displayedColumns: string[] = ['name', 'description', 'price', 'category', 'actions'];
   dataSource = [];
 
   constructor(
@@ -28,8 +28,13 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  openDlgProduct() {
-    const dialogRef = this.dialog.open(ProductSaveComponent);
+  openDlgProduct(id?: any, product?: any) {
+    const dialogRef = this.dialog.open(ProductSaveComponent, {
+      data: {
+        id,
+        product
+      }
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
